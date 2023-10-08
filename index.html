@@ -1,1 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr.Sarah</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        /* Add mobile-responsive CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
 
+        .Inputcontainer {
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        /* Adjust styles for smaller screens (e.g., mobile devices) */
+        @media screen and (max-width: 768px) {
+            .Inputcontainer {
+                padding: 10px;
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="Inputcontainer">
+        <h2 class="title">Ask Dr.Sarah</h2>
+    
+        <!-- Age and Information Sections (Existing) -->
+        <div class="Age range__slider" data-min="4" data-max="200">
+            <div class="Age__title field-title" data-length='0'>Age:</div>
+            <input id="slider" type="range" min="4" max="200" value="16" />
+        </div>
+        
+        <!-- Weight Input Section -->
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- ... -->
+    <div class="Weight">
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" min="1" step="any">
+        <div id="weight-alert" class="alert"></div> <!-- Add this div for the alert -->
+    </div>
+
+</body>
+</html>
+        <!-- Name Input (Existing) -->
+        <div class="Name">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <div id="name-alert" class="alert"></div> <!-- Add this div for the alert -->
+        </div>        
+    
+        <!-- Gender Radio Buttons (Existing) -->
+        <div class="Gender">
+            <label for="gender">Gender:</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+        </div>
+          
+        <!-- "Complaint" Input Section (Updated Label and Reduced Size) -->
+        <div class="Complaint">
+            <label for="complaint">Complaint:</label>
+            <input list="illnesses" id="complaint" name="complaint">
+            <datalist id="illnesses">
+                <option value="Malaria">
+                <option value="Fever">
+                <option value="Headache">
+                <option value="Cough">
+                <option value="Carter">
+                <!-- Add more options as needed -->
+            </datalist>
+        </div>
+        
+        <!-- "For how long have you had the symptom?" Input Section (Existing) -->
+        <div class="SymptomDuration">
+            <label for="symptom-duration">For how long have you had the symptom?</label>
+            <input type="text" id="symptom-duration" name="symptom-duration">
+            <select id="duration-unit" name="duration-unit">
+                <option value="days">Days</option>
+                <option value="months">Months</option>
+            </select>
+        </div>          
+          
+        <!-- "Any chronic illness in the person or family members?" Input Section (Existing) -->
+        <div class="ChronicIllness">
+            <label for="chronic-illness">Any chronic illness in you or family members ?</label>
+            <select id="chronic-illness" name="chronic-illness">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+    
+        <!-- "Any drug allergy?" Input Section (Existing) -->
+        <div class="DrugAllergy">
+            <label for="drug-allergy">Any drug allergy?</label>
+            <select id="drug-allergy" name="drug-allergy">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        
+        <!-- Button to Generate Result -->
+        <button class="btn generate" id="generate">Generate Result</button>
+    </div>
+
+    <!-- Result Container (Initially Hidden) -->
+    <div class="ResultContainer" id="result-container" style="display: none;">
+        <!-- Result content will go here -->
+        <div id="result-text"></div>
+        <button class="btn generate" id="back-to-input">Go Back</button>
+        <button class="btn generate" id="save-result">Save Your Result</button>
+    </div>
+    <script>
+        // Get the range input element and the "Age__title" element
+      var slider = document.getElementById('slider');
+      var ageTitle = document.querySelector('.Age__title');
+
+       // Function to update the displayed age value
+       function updateAgeValue() {
+       ageTitle.setAttribute('data-length', slider.value);
+        }
+
+      // Update the displayed age value when the slider value changes
+     slider.addEventListener('input', updateAgeValue);
+
+       // Initial call to set the age value based on the initial slider value
+       updateAgeValue();
+
+    </script>
+    
+    <script src="js.js"></script>
+</body>
+</html>
