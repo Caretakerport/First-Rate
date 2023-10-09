@@ -1,3 +1,14 @@
+// Function to calculate drug dosage
+function calculateDosage(weight, age) {
+    // Define the dose per kg for the specific drug (you can adjust this value)
+    const dosePerKg = 5; // Example dose per kg in mg
+
+    // Calculate the required dose
+    const requiredDose = weight * dosePerKg * age;
+
+    return requiredDose;
+}
+
 // Define the array of malaria drugs
 const malariaDrugs = [
 	{
@@ -111,48 +122,67 @@ const malariaDrugs = [
 	// Replace this with your logic to save the result (e.g., to a file or database)
 	alert("Result saved!");
   });
-  
- // Function to generate a result based on user inputs
+
+// Function to generate a result based on user inputs
 function generateResult(
-	age,
-	name,
-	gender,
-	complaint,
-	symptomDuration,
-	chronicIllness,
-	drugAllergy,
-	weightKg
-  ) {
-	let resultText = `Dear ${name},\n\n`;
-	resultText += `You are a ${age}-year-old ${gender} with a complaint of ${complaint}. You have had this symptom for ${symptomDuration}.\n\n`;
-	resultText += `Chronic illness in family: ${chronicIllness}\n`;
-	resultText += `Drug allergy: ${drugAllergy}\n\n`;
-  
+    age,
+    name,
+    gender,
+    complaint,
+    symptomDuration,
+    chronicIllness,
+    drugAllergy,
+    weightKg
+) {
+    const durationUnit = document.getElementById("duration-unit").value;
+    let resultText = `Dear ${name},\n\n`;
+    resultText += `You are a ${age}-year-old ${gender} with a complaint of ${complaint}.`;
+
+    if (durationUnit === "days" || durationUnit === "months") {
+        resultText += ` You have had this symptom for ${symptomDuration} ${durationUnit}.`;
+    } else {
+        resultText += ` You have had this symptom for ${symptomDuration}.`;
+    }
+
+    resultText += `\n\nChronic illness in family: ${chronicIllness}\n`;
+    resultText += `Drug allergy: ${drugAllergy}\n\n`;
+
 	if (complaint.toLowerCase() === "malaria") {
-	  resultText += "Here is some advice on how to manage malaria:\n";
-	  resultText += "- [Add advice for malaria]\n\n";
-	  resultText += "Here are some drugs that can be used to treat malaria:\n";
-	  malariaDrugs.forEach((drug, index) => {
-		if (age >= drug.ageRange.min && age <= drug.ageRange.max) {
-		  resultText += `${index + 1}. ${drug.name} - Usage: ${drug.usage}\n`;
-		}
-	  });
+		resultText += "Here is some advice on how to manage malaria:\n";
+		resultText += "- [Add advice for malaria]\n\n";
+		resultText += "Here are some drugs that can be used to treat malaria:\n";
+		malariaDrugs.forEach((drug, index) => {
+			if (age >= drug.ageRange.min && age <= drug.ageRange.max) {
+				resultText += `${index + 1}. ${drug.name} - Usage: ${drug.usage}\n`;
+	
+				// Calculate dosage and add it to the result
+				const dosage = calculateDosage(weightKg, age);
+				resultText += `   Dosage: ${dosage} mg per day\n`;
+
+            // Debugging: Log dosage to console
+            console.log(`Calculated Dosage for ${drug.name}: ${dosage} mg per day`);
+			}
+		});
 	} else if (complaint.toLowerCase() === "fever") {
-	  resultText += "Here is some advice on how to manage fever:\n";
-	  resultText += "- [Add advice for fever]\n\n";
-	  resultText += "Here are some drugs that can be used to treat fever:\n";
-	  feverDrugs.forEach((drug, index) => {
-		if (age >= drug.ageRange.min && age <= drug.ageRange.max) {
-		  resultText += `${index + 1}. ${drug.name} - Usage: ${drug.usage}\n`;
-		}
-	  });
-	} else if (complaint.toLowerCase() === "covid-19") {
-	  resultText += "For COVID-19, it is important to isolate yourself, rest, stay hydrated, and monitor your symptoms. ";
-	  resultText += "Consult a healthcare professional for guidance on managing your symptoms and follow local health guidelines.";
-	} else {
-	  resultText += "Unfortunately, we don't have specific information for the entered complaint. Please consult a healthcare professional for guidance. But remember that this is a pay service.";
-	}
-  
-	return resultText;
-  }
+		resultText += "Here is some advice on how to manage fever:\n";
+		resultText += "- [Add advice for fever]\n\n";
+		resultText += "Here are some drugs that can be used to treat fever:\n";
+		feverDrugs.forEach((drug, index) => {
+			if (age >= drug.ageRange.min && age <= drug.ageRange.max) {
+				resultText += `${index + 1}. ${drug.name} - Usage: ${drug.usage}\n`;
+	
+				// Calculate dosage and add it to the result
+				const dosage = calculateDosage(weightKg, age);
+				resultText += `   Dosage: ${dosage} mg per day\n`;
+			}
+		}) 
+    } else if (complaint.toLowerCase() === "covid-19") {
+        resultText += "For COVID-19, it is important to isolate yourself, rest, stay hydrated, and monitor your symptoms. ";
+        resultText += "Consult a healthcare professional for guidance on managing your symptoms and follow local health guidelines.";
+    } else {
+        resultText += "Unfortunately, we don't have specific information for the entered complaint. Please consult a healthcare professional for guidance. But remember that this is a pay service.";
+    }
+
+    return resultText;
+}
   
