@@ -14,56 +14,61 @@
             padding: 0;
         }
 
-        .Inputcontainer {
-            background-color: #fff;
+  .Inputcontainer {
+            background-color: rgba(255, 255, 255, 0.5); /* Set a background color with opacity */
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
             border-radius: 10px;
             margin: 20px;
+            position: relative;
         }
-
         /* Adjust styles for smaller screens (e.g., mobile devices) */
         @media screen and (max-width: 768px) {
             .Inputcontainer {
                 padding: 10px;
                 margin: 10px;
             }
+
+        }
+        .logo {
+            position: absolute;
+            bottom: 10px; /* Adjust the position as needed */
+            right: 10px; /* Adjust the position as needed */
+            max-width: 50px; /* Adjust the max-width as needed */
+            opacity: 0.7; /* Adjust the opacity as needed */
         }
     </style>
 </head>
 <body>
-    <div class="background-image"></div>
+   <img src="./FRM-removebg-preview.png" alt="Your Logo" class="logo">
     <div class="Inputcontainer">
         <h2 class="title">Ask First-Rate Medi</h2>
     
         <!-- Age and Information Sections (Existing) -->
-        <div class="Age range__slider" data-min="4" data-max="200">
+        <div class="Age range__slider" data-min="1" data-max="200">
             <div class="Age__title field-title" data-length='0'>Age:</div>
-            <input id="slider" type="range" min="4" max="200" value="16" />
+            <input id="slider" type="range" min="1" max="200" value="1" />
         </div>
         
-        <!-- Weight Input Section -->
         <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ... -->
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <!-- ... -->
+   <!-- Weight Input Section -->
     <div class="Weight">
         <label for="weight">Weight (kg):</label>
         <input type="number" id="weight" name="weight" min="1" step="any">
-        <div id="weight-alert" class="alert"></div> <!-- Add this div for the alert -->
+        <div id="weight-alert" class="alert"></div>
     </div>
-
 </body>
 </html>
         <!-- Name Input (Existing) -->
         <div class="Name">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name">
-            <div id="name-alert" class="alert"></div> <!-- Add this div for the alert -->
+            <div id="name-alert" class="alert"></div> 
         </div>        
     
         <!-- Gender Radio Buttons (Existing) -->
@@ -84,7 +89,9 @@
                 <option value="Fever">
                 <option value="Headache">
                 <option value="Cough">
-                <option value="Carter">
+                <option value="Heartburn">
+                <option value="Diabetes">
+                <option value="">
                 <!-- Add more options as needed -->
             </datalist>
         </div>
