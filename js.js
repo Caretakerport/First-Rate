@@ -28,12 +28,12 @@ const malariaDrugs = [
   const feverDrugs = [
 	{
 	  name: "Paracetamol",
-	  ageRange: { min: 1, max: 200 }, // Age range for usage
+	  ageRange: { min: 1, max: 100 }, // Age range for usage
 	  usage: "Take as directed by a healthcare professional."
 	},
 	{
 	  name: "Ibuprofen",
-	  ageRange: { min: 1, max: 200 }, // Age range for usage
+	  ageRange: { min: 1, max: 100 }, // Age range for usage
 	  usage: "Take as directed by a healthcare professional."
 	},
 	// Add more fever drugs as needed
@@ -122,7 +122,7 @@ const malariaDrugs = [
 	// Replace this with your logic to save the result (e.g., to a file or database)
 	alert("Result saved!");
   });
-
+  
 // Function to generate a result based on user inputs
 function generateResult(
     age,
@@ -185,4 +185,4 @@ function generateResult(
 
     return resultText;
 }
-  
+    
