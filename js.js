@@ -93,7 +93,7 @@ const malariaDrugs = [
 	);
   
 	// Display the result in the result container
-	resultTextElement.textContent = result;
+	resultTextElement.innerHTML = result;
   
 	// Show the result container and hide the input container
 	inputContainer.style.display = "none";
@@ -123,8 +123,7 @@ const malariaDrugs = [
 	alert("Result saved!");
   });
   
-// Function to generate a result based on user inputs
-function generateResult(
+  function generateResult(
     age,
     name,
     gender,
@@ -135,54 +134,76 @@ function generateResult(
     weightKg
 ) {
     const durationUnit = document.getElementById("duration-unit").value;
-    let resultText = `Dear ${name},\n\n`;
-    resultText += `You are a ${age}-year-old ${gender} with a complaint of ${complaint}.`;
+    let resultText = `<p>Dear ${name},</p>`;
+    resultText += `<p>You are a ${age}-year-old ${gender} with a complaint of ${complaint}.</p>`;
 
     if (durationUnit === "days" || durationUnit === "months") {
-        resultText += ` You have had this symptom for ${symptomDuration} ${durationUnit}.`;
+        resultText += `<p>You have had this symptom for ${symptomDuration} ${durationUnit}.</p>`;
     } else {
-        resultText += ` You have had this symptom for ${symptomDuration}.`;
+        resultText += `<p>You have had this symptom for ${symptomDuration}.</p>`;
     }
 
-    resultText += `\n\nChronic illness in family: ${chronicIllness}\n`;
-    resultText += `Drug allergy: ${drugAllergy}\n\n`;
+    resultText += `<p>Chronic illness in family: ${chronicIllness}</p>`;
+    resultText += `<p>Drug allergy: ${drugAllergy}</p><br>`;
 
-	if (complaint.toLowerCase() === "malaria") {
-		resultText += "Here is some advice on how to manage malaria:\n";
-		resultText += "- [Add advice for malaria]\n\n";
-		resultText += "Here are some drugs that can be used to treat malaria:\n";
-		malariaDrugs.forEach((drug, index) => {
-			if (age >= drug.ageRange.min && age <= drug.ageRange.max) {
-				resultText += `${index + 1}. ${drug.name} - Usage: ${drug.usage}\n`;
-	
-				// Calculate dosage and add it to the result
-				const dosage = calculateDosage(weightKg, age);
-				resultText += `   Dosage: ${dosage} mg per day\n`;
+    if (complaint.toLowerCase() === "malaria") {
+        resultText += `<p>Here is some advice on how to manage malaria:</p>`;
+        resultText += `<ul>`;
+        resultText += `<li>[Add advice for malaria]</li>`;
+        resultText += `</ul>`;
+        resultText += `<p>Here are some drugs that can be used to treat malaria:</p>`;
+        resultText += `<ol>`;
+        malariaDrugs.forEach((drug, index) => {
+            if (age >= drug.ageRange.min && age <= drug.ageRange.max) {
+                resultText += `<li>${index + 1}. ${drug.name} - Usage: ${drug.usage}<br>`;
+                
+                // Calculate dosage and add it to the result
+                const dosage = calculateDosage(weightKg, age);
+                resultText += `Dosage: ${dosage} mg per day</li>`;
 
-            // Debugging: Log dosage to console
-            console.log(`Calculated Dosage for ${drug.name}: ${dosage} mg per day`);
-			}
-		});
-	} else if (complaint.toLowerCase() === "fever") {
-		resultText += "Here is some advice on how to manage fever:\n";
-		resultText += "- [Add advice for fever]\n\n";
-		resultText += "Here are some drugs that can be used to treat fever:\n";
-		feverDrugs.forEach((drug, index) => {
-			if (age >= drug.ageRange.min && age <= drug.ageRange.max) {
-				resultText += `${index + 1}. ${drug.name} - Usage: ${drug.usage}\n`;
-	
-				// Calculate dosage and add it to the result
-				const dosage = calculateDosage(weightKg, age);
-				resultText += `   Dosage: ${dosage} mg per day\n`;
-			}
-		}) 
+                // If the user is an adult (age >= 18), provide adult dosage and information
+                if (age >= 18) {
+                    resultText += `<li>Adult Dosage: ${dosage * 2} mg per day (Example)</li>`;
+                    resultText += `<li>Adult Information: [Add adult information here]</li>`;
+                }
+
+                // Debugging: Log dosage to console
+                console.log(`Calculated Dosage for ${drug.name}: ${dosage} mg per day`);
+            }
+        });
+        resultText += `</ol>`;
+    } else if (complaint.toLowerCase() === "fever") {
+        resultText += `<p>Here is some advice on how to manage fever:</p>`;
+        resultText += `<ul>`;
+        resultText += `<li>1. Drinking plenty of water</li>`;
+        resultText += `<li>2. Comfortable clothing</li>`;
+        resultText += `<li>3. Drinking lemon juice with warm water</li>`;
+        resultText += `</ul>`;
+        resultText += `<p>Here are some drugs that can be used to treat fever:</p>`;
+        resultText += `<ol>`;
+        feverDrugs.forEach((drug, index) => {
+            if (age >= drug.ageRange.min && age <= drug.ageRange.max) {
+                resultText += `<li>${index + 1}. ${drug.name} - Usage: ${drug.usage}<br>`;
+                
+                // Calculate dosage and add it to the result
+                const dosage = calculateDosage(weightKg, age);
+                resultText += `Dosage: ${dosage} mg per day</li>`;
+
+                // If the user is an adult (age >= 18), provide adult dosage and information
+                if (age >= 18) {
+                    resultText += `<li>Adult Dosage: ${dosage * 2} mg per day (Example)</li>`;
+                    resultText += `<li>Adult Information: [Add adult information here]</li>`;
+                }
+            }
+        });
+        resultText += `</ol>`;
     } else if (complaint.toLowerCase() === "covid-19") {
-        resultText += "For COVID-19, it is important to isolate yourself, rest, stay hydrated, and monitor your symptoms. ";
-        resultText += "Consult a healthcare professional for guidance on managing your symptoms and follow local health guidelines.";
+        resultText += `<p>For COVID-19, it is important to isolate yourself, rest, stay hydrated, and monitor your symptoms.</p>`;
+        resultText += `<p>Consult a healthcare professional for guidance on managing your symptoms and follow local health guidelines.</p>`;
     } else {
-        resultText += "Unfortunately, we don't have specific information for the entered complaint. Please consult a healthcare professional for guidance. But remember that this is a pay service.";
+        resultText += `<p>Unfortunately, we don't have specific information for the entered complaint.</p>`;
+        resultText += `<p>Please consult a healthcare professional for guidance. But remember that this is a pay service.</p>`;
     }
 
     return resultText;
 }
-    
