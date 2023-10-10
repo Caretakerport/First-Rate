@@ -95,7 +95,7 @@
                 <option value="Acidity">
                 <option value="Diabetes">
                 <option value="Ulcers">
-                     <option value="">
+                <option value="Covid-19">
                 <option value="">
                 <!-- Add more options as needed -->
             </datalist>
@@ -155,6 +155,34 @@
 
        // Initial call to set the age value based on the initial slider value
        updateAgeValue();
+
+       function generateResult(
+            age,
+            name,
+            gender,
+            complaint,
+            symptomDuration,
+            chronicIllness,
+            drugAllergy,
+            weightKg
+        ) {
+            const durationUnit = document.getElementById("duration-unit").value;
+            let resultText = `Dear ${name},<br><br>`;
+            resultText += `You are a ${age}-year-old ${gender} with a complaint of ${complaint}.<br><br>`;
+
+            if (durationUnit === "days" || durationUnit === "months") {
+                resultText += `You have had this symptom for ${symptomDuration} ${durationUnit}.<br><br>`;
+            } else {
+                resultText += `You have had this symptom for ${symptomDuration}.<br><br>`;
+            }
+
+            resultText += `Chronic illness in family: ${chronicIllness}<br>`;
+            resultText += `Drug allergy: ${drugAllergy}<br><br>`;
+
+            // ... Rest of your result text ...
+
+            return resultText;
+        }
 
     </script>
     
