@@ -6,7 +6,6 @@
     <title>First-Rate Medical</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
         /* Add mobile-responsive CSS styles here */
         body {
@@ -15,9 +14,8 @@
             margin: 0;
             padding: 0;
         }
-
-  .Inputcontainer {
-            background-color: rgba(255, 255, 255, 0.5); /* Set a background color with opacity */
+        .Inputcontainer {
+            background-color: rgba(2, 13, 109, 0.966); /* Set a background color with opacity */
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
             border-radius: 10px;
@@ -30,7 +28,6 @@
                 padding: 10px;
                 margin: 10px;
             }
-
         }
         .logo {
             position: absolute;
@@ -42,10 +39,9 @@
     </style>
 </head>
 <body>
-   <img src="./FRM-removebg-preview.png" alt="Your Logo" class="logo">
     <div class="Inputcontainer">
+        <img src="./FRM-removebg-preview.png" alt="Your Logo" class="logo">
         <h2 class="title">Ask First-Rate Medi</h2>
-
         <div class="dropdown">
             <button class="hamburger-button" id="hamburger-button">
                 <div class="hamburger-line"></div>
@@ -53,43 +49,31 @@
                 <div class="hamburger-line"></div>
                 <div class="close-icon"></div>
             </button>
-            
             <!-- Hidden Dropdown Content -->
             <div class="dropdown-content" id="dropdown-content">
                 <a href="#"><i class="fas fa-user"></i> Name of the User</a>
                 <a href="#"><i class="fas fa-history"></i> History</a>
                 <a href="#"><i class="fas fa-cog"></i> Settings</a>
                 <a href="#"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
-            </div>            
-        </div>        
-
+            </div>
+        </div>
         <!-- Age and Information Sections (Existing) -->
         <div class="Age range__slider" data-min="1" data-max="200">
             <div class="Age__title field-title" data-length='0'>Age:</div>
             <input id="slider" type="range" min="1" max="200" value="1" />
         </div>
-        
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-   <!-- Weight Input Section -->
-    <div class="Weight">
-        <label for="weight">Weight (kg):</label>
-        <input type="number" id="weight" name="weight" min="1" step="any">
-        <div id="weight-alert" class="alert"></div>
-    </div>
-</body>
-</html>
+        <!-- Weight Input Section -->
+        <div class="Weight">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight" min="1" step="any">
+            <div id="weight-alert" class="alert"></div>
+        </div>
         <!-- Name Input (Existing) -->
         <div class="Name">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name">
-            <div id="name-alert" class="alert"></div> 
-        </div>        
-    
+            <div id="name-alert" class="alert"></div>
+        </div>
         <!-- Gender Radio Buttons (Existing) -->
         <div class="Gender">
             <label for="gender">Gender:</label>
@@ -98,7 +82,6 @@
             <input type="radio" id="male" name="gender" value="male">
             <label for="male">Male</label>
         </div>
-          
         <!-- "Complaint" Input Section (Updated Label and Reduced Size) -->
         <div class="Complaint">
             <label for="complaint">Complaint:</label>
@@ -112,7 +95,6 @@
                 <!-- Add more options as needed -->
             </datalist>
         </div>
-        
         <!-- "For how long have you had the symptom?" Input Section (Existing) -->
         <div class="SymptomDuration">
             <label for="symptom-duration">For how long have you had the symptom?</label>
@@ -121,8 +103,7 @@
                 <option value="days">Days</option>
                 <option value="months">Months</option>
             </select>
-        </div>          
-          
+        </div>
         <!-- "Any chronic illness in the person or family members?" Input Section (Existing) -->
         <div class="ChronicIllness">
             <label for="chronic-illness">Any chronic illness in you or family members ?</label>
@@ -131,7 +112,6 @@
                 <option value="no">No</option>
             </select>
         </div>
-    
         <!-- "Any drug allergy?" Input Section (Existing) -->
         <div class="DrugAllergy">
             <label for="drug-allergy">Any drug allergy?</label>
@@ -140,35 +120,31 @@
                 <option value="no">No</option>
             </select>
         </div>
-        
         <!-- Button to Generate Result -->
         <button class="btn generate" id="generate">Generate Result</button>
     </div>
-
-    <!-- Result Container (Initially Hidden) -->
     <div class="ResultContainer" id="result-container" style="display: none;">
-        <!-- Result content will go here -->
-        <div id="result-text"></div>
-        <button class="btn generate" id="back-to-input">Go Back</button>
-        <button class="btn generate" id="save-result">Save Your Result</button>
+        <div class="inner-container">
+            <img src="./FRM-removebg-preview.png" alt="Your Logo" class="logo-result">
+            <!-- Result content will go here -->
+            <div id="result-text"></div>
+            <button class="btn generate" id="back-to-input">Go Back</button>
+            <button class="btn generate" id="save-result">Save Your Result</button>
+        </div>
     </div>
     <script>
         // Get the range input element and the "Age__title" element
-      var slider = document.getElementById('slider');
-      var ageTitle = document.querySelector('.Age__title');
-
-       // Function to update the displayed age value
-       function updateAgeValue() {
-       ageTitle.setAttribute('data-length', slider.value);
+        var slider = document.getElementById('slider');
+        var ageTitle = document.querySelector('.Age__title');
+        // Function to update the displayed age value
+        function updateAgeValue() {
+            ageTitle.setAttribute('data-length', slider.value);
         }
-
-      // Update the displayed age value when the slider value changes
-     slider.addEventListener('input', updateAgeValue);
-
-       // Initial call to set the age value based on the initial slider value
-       updateAgeValue();
-
-       function generateResult(
+        // Update the displayed age value when the slider value changes
+        slider.addEventListener('input', updateAgeValue);
+        // Initial call to set the age value based on the initial slider value
+        updateAgeValue();
+        function generateResult(
             age,
             name,
             gender,
@@ -181,36 +157,30 @@
             const durationUnit = document.getElementById("duration-unit").value;
             let resultText = `Dear ${name},<br><br>`;
             resultText += `You are a ${age}-year-old ${gender} with a complaint of ${complaint}.<br><br>`;
-
             if (durationUnit === "days" || durationUnit === "months") {
                 resultText += `You have had this symptom for ${symptomDuration} ${durationUnit}.<br><br>`;
             } else {
                 resultText += `You have had this symptom for ${symptomDuration}.<br><br>`;
             }
-
             resultText += `Chronic illness in family: ${chronicIllness}<br>`;
             resultText += `Drug allergy: ${drugAllergy}<br><br>`;
-
             // ... Rest of your result text ...
-
             return resultText;
         }
-
     </script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const dropdownButton = document.getElementById("hamburger-button");
-        const dropdownContent = document.getElementById("dropdown-content");
-
-        dropdownButton.addEventListener("click", function () {
-            if (dropdownContent.style.display === "block") {
-                dropdownContent.style.display = "none";
-            } else {
-                dropdownContent.style.display = "block";
-            }
-        });
-    });
-</script>    
     <script src="js.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const dropdownButton = document.getElementById("hamburger-button");
+            const dropdownContent = document.getElementById("dropdown-content");
+            dropdownButton.addEventListener("click", function () {
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        });
+    </script>
 </body>
 </html>
