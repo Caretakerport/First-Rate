@@ -238,3 +238,15 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Function to update the current date and time
+function updateCurrentDate() {
+  const currentDate = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = currentDate.toLocaleDateString('en-US', options);
+  const currentTime = currentDate.toLocaleTimeString('en-US');
+  const dateElement = document.getElementById('current-date');
+  dateElement.innerHTML = `${formattedDate} - ${currentTime}`;
+}
+
+// Call the function to set the initial date
+updateCurrentDate();
