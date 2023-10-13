@@ -15,7 +15,7 @@
             padding: 0;
         }
         .Inputcontainer {
-            background-color: rgba(2, 13, 109, 0.966); /* Set a background color with opacity */
+            background-color: rgba(3, 16, 53, 0.952); /* Set a background color with opacity */
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
             border-radius: 10px;
@@ -33,15 +33,55 @@
             position: absolute;
             bottom: 10px; /* Adjust the position as needed */
             right: 10px; /* Adjust the position as needed */
-            max-width: 50px; /* Adjust the max-width as needed */
+            max-width: 40px; /* Adjust the max-width as needed */
             opacity: 0.7; /* Adjust the opacity as needed */
+        }
+        .background-image {
+            position: absolute;
+            bottom: 0; /* Place the image at the bottom */
+            left: 0;
+            width: 100px; /* Adjust the width as needed */
+            height: 100px; /* Adjust the height as needed */
+            background-image: url('./FRM-removebg-preview.png'); /* Verify the file path */
+            background-size: cover; /* Adjust the size as needed */
+            background-repeat: no-repeat; /* Ensure it doesn't repeat */
+            z-index: -1;
+            opacity: 0.5; /* Adjust the opacity as needed */
+        }
+        .ResultContainer {
+            background-color: rgba(255, 255, 255, 0.5); /* Set a background color with opacity */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+            position: relative;
+        }
+        /* Adjust styles for smaller screens (e.g., mobile devices) */
+        @media screen and (max-width: 768px) {
+            .ResultContainer {
+                padding: 10px;
+                margin: 10px;
+            }
+        }
+        .logo-result {
+            position: absolute;
+            bottom: 10px; /* Adjust the position as needed */
+            right: 10px; /* Adjust the position as needed */
+            max-width: 50px; /* Adjust the max-width as needed */
+            opacity: 0.5; /* Adjust the opacity as needed */
         }
     </style>
 </head>
 <body>
     <div class="Inputcontainer">
         <img src="./FRM-removebg-preview.png" alt="Your Logo" class="logo">
-        <h2 class="title">Ask First-Rate Medi</h2>
+        <h2 class="title">
+            <span style="color: #ff00ff">Ask</span>
+            <span style="color: #ff0">First</span>
+            <span style="color: #ffffff">-</span>
+            <span style="color: #00ff00">Rate</span>
+            <span style="color: #ff0000">Medi</span>
+        </h2>
         <div class="dropdown">
             <button class="hamburger-button" id="hamburger-button">
                 <div class="hamburger-line"></div>
@@ -127,6 +167,7 @@
         <div class="inner-container">
             <img src="./FRM-removebg-preview.png" alt="Your Logo" class="logo-result">
             <!-- Result content will go here -->
+            <p id="current-date"></p>
             <div id="result-text"></div>
             <button class="btn generate" id="back-to-input">Go Back</button>
             <button class="btn generate" id="save-result">Save Your Result</button>
